@@ -11,11 +11,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 /**
- * An example command.  You can replace me with your own command.
+ * Arcade Drive - Controlling the drivetrain using the Y-axis of the left stick and
+ * the X-axis of the right stick
  */
 public class ArcadeDrive extends Command {
   public ArcadeDrive() {
-    // Use requires() here to declare subsystem dependencies
     requires(Robot.drivetrain);
   }
 

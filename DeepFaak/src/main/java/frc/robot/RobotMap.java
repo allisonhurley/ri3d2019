@@ -14,10 +14,6 @@ package frc.robot;
  * floating around.
  */
 public class RobotMap {
-
-  // public static int rangefinderPort = 1;
-  // public static int rangefinderModule = 1;
-
-  public static int DRIVER_GAMEPAD_PORT = 0;
-  public static int CO_DRIVER_GAMEPAD_PORT = 1;
+  public static int driverGamepadPort = 0;
+  public static int operatorGamepadPort = 1;
 }

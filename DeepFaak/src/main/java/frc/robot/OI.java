@@ -9,6 +9,9 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import frc.robot.commands.PlaceCargo;
+import frc.robot.commands.PlaceHatch;
 import frc.robot.utils.Gamepad;
 
 /**
@@ -24,13 +27,29 @@ public class OI {
   public WPI_TalonSRX driveRightFront = new WPI_TalonSRX(0);
   public WPI_TalonSRX driveRightMiddle = new WPI_TalonSRX(1);
   public WPI_TalonSRX driveRightBack = new WPI_TalonSRX(2);
-  public WPI_TalonSRX collectorOne = new WPI_TalonSRX(3);
-  public WPI_TalonSRX collectorTwo = new WPI_TalonSRX(4);
+  public WPI_TalonSRX cargoCollectorOne = new WPI_TalonSRX(3);
+  public WPI_TalonSRX cargoCollectorTwo = new WPI_TalonSRX(4);
   
-  /* Controllers */
-  Gamepad driverGamepad = new Gamepad(RobotMap.DRIVER_GAMEPAD_PORT);
+  /* Solenoids */
+  public DoubleSolenoid cargoSolenoid = new DoubleSolenoid(0, 1);
+  public DoubleSolenoid hatchSolenoid = new DoubleSolenoid(2, 3);
 
-  /*  */
+  /* Controllers */
+  Gamepad driverGamepad = new Gamepad(RobotMap.driverGamepadPort);
+  Gamepad operatorGamepad = new Gamepad(RobotMap.operatorGamepadPort);
+
+  /* Allowing robot to access controls */
+  public OI() {
+    bindControls();
+  }
+
+  /* Gamepad buttons */
+  private void bindControls() {
+    operatorGamepad.getLeftShoulder().whenPressed(new PlaceHatch());
+    operatorGamepad.getRightShoulder().whenPressed(new PlaceCargo());
+  }
+
+  /* Gamepad sticks */
   public double getDriverGamepadLeftY() {
     double y = driverGamepad.getLeftY();
     return y;

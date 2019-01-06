@@ -15,15 +15,18 @@ import frc.robot.commands.ArcadeDrive;
 import frc.robot.Robot;
 
 /**
- * An example subsystem.  You can replace me with your own Subsystem.
+ * Drivetrain - controls the drivetrain motors and allows for controlling with
+ * both Arcade Drive and Tank Drive
  */
 public class Drivetrain extends Subsystem {
   private SpeedControllerGroup driveLeft = new SpeedControllerGroup(Robot.oi.driveLeftFront, 
                                                                     Robot.oi.driveLeftMiddle,
                                                                     Robot.oi.driveLeftBack);
-private SpeedControllerGroup driveRight = new SpeedControllerGroup(Robot.oi.driveRightFront, 
+
+  private SpeedControllerGroup driveRight = new SpeedControllerGroup(Robot.oi.driveRightFront, 
                                                                     Robot.oi.driveRightMiddle,
                                                                     Robot.oi.driveRightBack);
+
   private DifferentialDrive drive = new DifferentialDrive(driveLeft, driveRight);
 
   @Override
@@ -38,6 +41,10 @@ private SpeedControllerGroup driveRight = new SpeedControllerGroup(Robot.oi.driv
 
   public void tankDrive(double left, double right) {
     drive.arcadeDrive(left, right);
+  }
+
+  public void timedDrive(double speed, double rotation, double time) {
+    drive.arcadeDrive(speed, rotation);
   }
 
   public void stop() {

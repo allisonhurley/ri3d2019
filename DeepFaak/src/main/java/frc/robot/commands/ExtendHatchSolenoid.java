@@ -10,13 +10,13 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
+
 /**
- * Tank Drive - controls the robot using the Y-axis of the left stick for the left side
- * and the Y-axis of the right stick for the right side
+ * Extends the solenoid for the Hatch Collector
  */
-public class TankDrive extends Command {
-  public TankDrive() {
-    requires(Robot.drivetrain);
+public class ExtendHatchSolenoid extends Command {
+  public ExtendHatchSolenoid() {
+    requires(Robot.hatchCollector);
   }
 
   // Called just before this Command runs the first time
@@ -27,10 +27,7 @@ public class TankDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.drivetrain.tankDrive(
-      Robot.oi.getDriverGamepadLeftY(),
-      Robot.oi.getDriverGamepadRightY()
-    );
+    Robot.hatchCollector.extendHatchSolenoid();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -42,7 +39,7 @@ public class TankDrive extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.drivetrain.stop();
+    Robot.hatchCollector.stopHatchSolenoid();
   }
 
   // Called when another command which requires one or more of the same
