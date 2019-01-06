@@ -12,6 +12,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.commands.PlaceCargo;
 import frc.robot.commands.PlaceHatch;
+import frc.robot.commands.RetractCargoSolenoid;
+import frc.robot.commands.RetractHatchSolenoid;
 import frc.robot.utils.Gamepad;
 
 /**
@@ -45,8 +47,10 @@ public class OI {
 
   /* Gamepad buttons */
   private void bindControls() {
-    operatorGamepad.getLeftShoulder().whenPressed(new PlaceHatch());
-    operatorGamepad.getRightShoulder().whenPressed(new PlaceCargo());
+    operatorGamepad.getButtonA().whenPressed(new PlaceHatch());
+    operatorGamepad.getButtonB().whenPressed(new RetractHatchSolenoid());
+    operatorGamepad.getButtonX().whenPressed(new PlaceCargo());
+    operatorGamepad.getButtonY().whenPressed(new RetractCargoSolenoid());
   }
 
   /* Gamepad sticks */
