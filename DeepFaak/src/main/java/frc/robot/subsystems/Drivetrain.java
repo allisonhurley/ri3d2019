@@ -28,8 +28,8 @@ private SpeedControllerGroup driveRight = new SpeedControllerGroup(Robot.oi.driv
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new TankDrive());
-    // setDefaultCommand(new ArcadeDrive());
+    // setDefaultCommand(new TankDrive());
+    setDefaultCommand(new ArcadeDrive());
   }
 
   public void arcadeDrive(double speed, double rotation) {
