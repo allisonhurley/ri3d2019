@@ -36,6 +36,11 @@ public class OI {
     return y;
   }
 
+  public double getDriverGamepadRightY() {
+    double y = driverGamepad.getRightY();
+    return y;
+  }
+
   public double getDriverGamepadRightX() {
     double x = driverGamepad.getRightX();
     return x;

@@ -26,7 +26,7 @@ public class TankDrive extends Command {
   protected void execute() {
     Robot.drivetrain.tankDrive(
       Robot.oi.getDriverGamepadLeftY(),
-      Robot.oi.getDriverGamepadRightX()
+      Robot.oi.getDriverGamepadRightY()
     );
   }
 
